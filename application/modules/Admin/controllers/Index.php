@@ -4,7 +4,7 @@
  * Date: 2018/9/23
  * Time: 19:58
  */
-use common\YUrl;
+
 class IndexController extends \common\controllers\Admin {
     private $url;
     public function init()
