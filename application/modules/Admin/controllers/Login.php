@@ -4,11 +4,11 @@
  * Date: 2018/9/23
  * Time: 20:37
  */
-use common\Yurl;
 class LoginController extends \common\controllers\Admin {
     private $url;
     public function init()
     {
+        ini_set('yaf.use_namespace', "1");
         $this->url = $this->urlEncryption();
     }
     public function indexAction()
