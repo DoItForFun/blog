@@ -5,7 +5,6 @@
  * Time: 15:15
  */
 namespace common\controllers;
-use function MongoDB\BSON\toJSON;
 
 class Admin extends \Yaf\Controller_Abstract{
 

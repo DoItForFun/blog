@@ -87,6 +87,12 @@ class Bootstrap extends Yaf\Bootstrap_Abstract {
         }
 	}
 
+    public function _initNamespace()
+    {
+        $loader = \Yaf\Loader::getInstance();
+        $loader->registerLocalNamespace(array("common", "Local"));
+    }
+
     /**
      * 初始化Eloquent ORM
      * @param \Yaf\Dispatcher $dispatcher
