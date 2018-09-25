@@ -7,6 +7,7 @@
  * 这些方法, 都接受一个参数:Yaf_Dispatcher $dispatcher
  * 调用的次序, 和申明的次序相同
  */
+use Illuminate\Database\Capsule\Manager as DB;
 class Bootstrap extends Yaf\Bootstrap_Abstract {
     private $config;
 	public function _initConfig() {
@@ -92,7 +93,7 @@ class Bootstrap extends Yaf\Bootstrap_Abstract {
      */
     public function _initDefaultDb(Yaf\Dispatcher $dispatcher)
     {
-        $capsule = new Illuminate\Database\Capsule\Manager;
+        $capsule = new DB();
 
         $database = $this->config->database->toArray();
         $capsule->addConnection($database);          // 创建连接
