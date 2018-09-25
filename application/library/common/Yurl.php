@@ -4,7 +4,6 @@
  * @author fingerQin
  * @date 2016-04-05
  */
-namespace common;
 class YUrl
 {
     /**
