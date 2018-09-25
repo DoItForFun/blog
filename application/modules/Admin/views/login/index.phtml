@@ -1,7 +1,4 @@
-<?php
-require (APP_ROOT .'/application/library/common/Yurl.php');
-$model = new YUrl();
-?>
+
 <!doctype html>
 <html lang="en" class="fullscreen-bg">
 <head>
@@ -10,18 +7,18 @@ $model = new YUrl();
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <!-- VENDOR CSS -->
-    <link rel="stylesheet" href="<?php echo $model::assets('admin','css','/bootstrap.min.css')?>">
-    <link rel="stylesheet" href="<?php echo $model::assets('admin','vendor','/font-awesome/css/font-awesome.min.css')?>">
-    <link rel="stylesheet" href="<?php echo $model::assets('admin','vendor','/linearicons/style.css')?>">
+    <link rel="stylesheet" href="<?php echo common_YUrl::assets('admin','css','/bootstrap.min.css')?>">
+    <link rel="stylesheet" href="<?php echo common_YUrl::assets('admin','vendor','/font-awesome/css/font-awesome.min.css')?>">
+    <link rel="stylesheet" href="<?php echo common_YUrl::assets('admin','vendor','/linearicons/style.css')?>">
     <!-- MAIN CSS -->
-    <link rel="stylesheet" href="<?php echo $model::assets('admin','css','/main.css')?>">
+    <link rel="stylesheet" href="<?php echo common_YUrl::assets('admin','css','/main.css')?>">
     <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-    <link rel="stylesheet" href="<?php echo $model::assets('admin','css','/demo.css')?>">
+    <link rel="stylesheet" href="<?php echo common_YUrl::assets('admin','css','/demo.css')?>">
     <!-- GOOGLE FONTS -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
     <!-- ICONS -->
-    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo $model::assets('admin','img','/apple-icon.png')?>">
-    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo $model::assets('admin','img','/favicon.png')?>">
+    <link rel="apple-touch-icon" sizes="76x76" href="<?php echo common_YUrl::assets('admin','img','/apple-icon.png')?>">
+    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo common_YUrl::assets('admin','img','/favicon.png')?>">
 </head>
 
 <body>
