@@ -4,8 +4,8 @@
  * @author fingerQin
  * @date 2016-04-05
  */
-
-class common_YUrl
+namespace common;
+class YUrl
 {
     /**
      * 获取当前去除分页符的URL。
