@@ -5,7 +5,7 @@
  * @date 2016-04-05
  */
 
-class YUrl
+class common_YUrl
 {
     /**
      * 获取当前去除分页符的URL。
