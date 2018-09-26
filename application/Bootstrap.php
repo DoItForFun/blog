@@ -61,11 +61,21 @@ class Bootstrap extends Yaf\Bootstrap_Abstract {
                'action' => 'index'
            ],[]
        );
+       $routeLogout = new Yaf\Route\Rewrite(
+           '/logout',
+           [
+               'module' => 'Admin',
+               'controller' => 'Logout',
+               'action' => 'logout'
+
+           ],[]
+       );
 
         $router->addRoute('home',$route);
         $router->addRoute('admin',$routeAdmin);
         $router->addRoute('login',$routeLogin);
         $router->addRoute('register',$routeRegister);
+        $router->addRoute('logout',$routeLogout);
 
 
 	}

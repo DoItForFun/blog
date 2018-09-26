@@ -20,7 +20,6 @@ class IndexController extends \common\controllers\Admin {
         if(empty($user)){
             $this->redirect('/login?url='.$this->url);
         }
-
-
+        $this->getView()->assign('userInfo',$user);
     }
 }

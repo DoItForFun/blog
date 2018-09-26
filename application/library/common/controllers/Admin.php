@@ -43,9 +43,13 @@ class Admin extends \Yaf\Controller_Abstract{
      */
     public function loginStatus($userInfo ,$status = 1)
     {
+        session_start();
         if($status === 1){
-            session_start();
             $_SESSION['userinfo'] = ($userInfo);
+        }
+        if($status === 0){
+            session_destroy();
+            $this->redirect('/login');
         }
     }
 

@@ -23,9 +23,16 @@ class LoginController extends \common\controllers\Admin {
                 //登录完成，记录登录状态
                 $this->loginStatus(array('id'=>$check['id'],'username'=>$userName));
                 $url = $this->urlDecryption($this->url);
+                if($_POST['remember'] == 'on'){
+                    setcookie('username',$userName);
+                    setcookie('password',$_POST['password']);
+                }else{
+                    setcookie('username','',-1);
+                    setcookie('password','',-1);
+                }
                 $this->redirect($url);
             }
-            $this->errorJump('无此用户','/login');
+            $this->errorJump('用户名或密码错误','/login');
         }
     }
 
