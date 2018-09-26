@@ -8,6 +8,7 @@ class LoginController extends \common\controllers\Admin {
     private $url;
     public function init()
     {
+        parent::init();
         ini_set('yaf.use_namespace', "1");
         $this->url = $this->urlEncryption();
     }
