@@ -5,6 +5,10 @@
  * Time: 21:13
  */
 class RegisterController extends \common\controllers\Admin {
+    public function init()
+    {
+        parent::init();
+    }
     public function indexAction()
     {
         if($this->getRequest()->isPost()){

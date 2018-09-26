@@ -7,8 +7,10 @@
 namespace common\controllers;
 
 class Admin extends \Yaf\Controller_Abstract{
-
-
+    public function init()
+    {
+        \Yaf\Loader::import(APP_ROOT . '/application/library/common/Yurl.php');
+    }
     public function successfulJump($message = '',$url= '' ,$second = 5 )
     {
         $this->getView()->assign('message', $message);

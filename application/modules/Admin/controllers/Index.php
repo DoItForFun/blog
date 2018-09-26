@@ -9,6 +9,7 @@ class IndexController extends \common\controllers\Admin {
     private $url;
     public function init()
     {
+        parent::init();
         $this->url = $this->urlEncryption();
     }
     public function indexAction()
