@@ -25,6 +25,7 @@ class LoginController extends \common\controllers\Admin {
                 $url = $this->urlDecryption($this->url);
                 $this->redirect($url);
             }
+            $this->errorJump('无此用户','/login');
         }
     }
 
