@@ -19,7 +19,7 @@ class Admin_UserModel extends \Illuminate\Database\Eloquent\Model{
     {
         try{
             $info = DB::table('users')->where($where)->take(1)->first($fields);
-            return get_object_vars($info);
+            return @get_object_vars($info);
         }catch (Exception $e){
             echo $e->getMessage();
         }
