@@ -32,7 +32,7 @@ class RegisterController extends \common\controllers\Admin {
     public function getRegisterCodeAction()
     {
         Yaf\Dispatcher::getInstance()->disableView();
-        echo  md5(date('Y-m-d-h').'lizhe');
+        return  md5(date('Y-m-d-h').'lizhe');
 
     }
     public function ajaxCheckAction()
