@@ -194,6 +194,9 @@ class YUrl
             case 'admin':
                 $staticsUrl .= '/public/admin';
                 break;
+            case 'editor':
+                $staticsUrl .= '/public/editor';
+                break;
 
         }
 
