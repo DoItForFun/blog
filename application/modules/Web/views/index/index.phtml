@@ -43,7 +43,7 @@
         <div class="row">
             <main class="col-md-8">
                 <?php
-                    foreach($list as $val){?>
+                    foreach($list as $k=>$val){?>
                 <article class="post post-1">
                     <header class="entry-header">
                         <h1 class="entry-title">
@@ -54,7 +54,7 @@
                         </div>
                     </header>
                     <div style="overflow: hidden;height: 150px">
-                        <div id="doc-content<?php echo $val['id']?>">
+                        <div id="doc-content<?php echo $k?>">
                             <textarea style="display:none;"><?php echo $val['content']?></textarea>
                         </div>
                     </div>
@@ -102,16 +102,6 @@
 <script>
 
     $(function () {
-        editormd.markdownToHTML("doc-content3", {//注意：这里是上面DIV的id
-            htmlDecode: "style,script,iframe",
-            emoji: true,
-            taskList: true,
-            tocm: true,
-            tex: true, // 默认不解析
-            flowChart: true, // 默认不解析
-            sequenceDiagram: true, // 默认不解析
-            codeFold: true
-        });
         editormd.markdownToHTML("doc-content2", {//注意：这里是上面DIV的id
             htmlDecode: "style,script,iframe",
             emoji: true,
@@ -123,6 +113,16 @@
             codeFold: true
         });
         editormd.markdownToHTML("doc-content1", {//注意：这里是上面DIV的id
+            htmlDecode: "style,script,iframe",
+            emoji: true,
+            taskList: true,
+            tocm: true,
+            tex: true, // 默认不解析
+            flowChart: true, // 默认不解析
+            sequenceDiagram: true, // 默认不解析
+            codeFold: true
+        });
+        editormd.markdownToHTML("doc-content0", {//注意：这里是上面DIV的id
             htmlDecode: "style,script,iframe",
             emoji: true,
             taskList: true,
