@@ -7,7 +7,7 @@
 use Illuminate\Database\Capsule\Manager as DB;
 class Admin_UserModel extends \Illuminate\Database\Eloquent\Model{
     const table = 'users';
-    static public function insertData($data)
+    public function insertData($data)
     {
         try{
             return DB::table(self::table)->insertGetId($data);
@@ -15,10 +15,10 @@ class Admin_UserModel extends \Illuminate\Database\Eloquent\Model{
             echo $e->getMessage();
         }
     }
-    static public function getOneData($where,$fields)
+    public function getOneData($where,$fields)
     {
         try{
-            $info = DB::table('users')->where($where)->take(1)->first($fields);
+            $info = DB::table(self::table)->where($where)->take(1)->first($fields);
             return @get_object_vars($info);
         }catch (Exception $e){
             echo $e->getMessage();

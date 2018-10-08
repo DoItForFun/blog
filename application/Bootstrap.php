@@ -7,83 +7,89 @@
  * 这些方法, 都接受一个参数:Yaf_Dispatcher $dispatcher
  * 调用的次序, 和申明的次序相同
  */
+
 use Illuminate\Database\Capsule\Manager as DB;
-class Bootstrap extends Yaf\Bootstrap_Abstract {
+
+class Bootstrap extends Yaf\Bootstrap_Abstract
+{
     private $config;
-	public function _initConfig() {
-		//把配置保存起来
-		$arrConfig = Yaf\Application::app()->getConfig();
-		Yaf\Registry::set('config', $arrConfig);
-		$this->config = $arrConfig;
-	}
 
-	public function _initPlugin(Yaf\Dispatcher $dispatcher) {
-		//注册一个插件
-		$objSamplePlugin = new SamplePlugin();
-		$dispatcher->registerPlugin($objSamplePlugin);
-	}
+    public function _initConfig()
+    {
+        //把配置保存起来
+        $arrConfig = Yaf\Application::app()->getConfig();
+        Yaf\Registry::set('config', $arrConfig);
+        $this->config = $arrConfig;
+    }
 
-	/**
-	 * @param \Yaf\Dispatcher $dispatcher
-	 */
-	public function _initRoute(Yaf\Dispatcher $dispatcher) {
-		//在这里注册自己的路由协议,默认使用简单路由
+    public function _initPlugin(Yaf\Dispatcher $dispatcher)
+    {
+        //注册一个插件
+        $objSamplePlugin = new SamplePlugin();
+        $dispatcher->registerPlugin($objSamplePlugin);
+    }
+
+    /**
+     * @param \Yaf\Dispatcher $dispatcher
+     */
+    public function _initRoute(Yaf\Dispatcher $dispatcher)
+    {
+        //在这里注册自己的路由协议,默认使用简单路由
         $router = $dispatcher->getRouter();
 
         $route = new Yaf\Route\Rewrite(
             '/home',
             [
                 'module' => 'Web',
-                'controller'=>'Index',
+                'controller' => 'Index',
                 'actions' => 'index'
-            ],[]);
-       $routeAdmin = new Yaf\Route\Rewrite(
-           '/back',
-           [
-               'module' => 'Admin',
-               'controller'=>'Index',
-               'action' => 'index'
-           ],[]
-       );
-       $routeLogin = new Yaf\Route\Rewrite(
-           '/login',
-           [
-               'module' => 'Admin',
-               'controller'=>'Login',
-               'action' => 'index'
-           ],[]
-       );
-       $routeRegister = new Yaf\Route\Rewrite(
-           '/register',
-           [
-               'module' => 'Admin',
-               'controller' => 'Register',
-               'action' => 'index'
-           ],[]
-       );
-       $routeLogout = new Yaf\Route\Rewrite(
-           '/logout',
-           [
-               'module' => 'Admin',
-               'controller' => 'Logout',
-               'action' => 'logout'
+            ], []);
+        $routeAdmin = new Yaf\Route\Rewrite(
+            '/back',
+            [
+                'module' => 'Admin',
+                'controller' => 'Index',
+                'action' => 'index'
+            ], []
+        );
+        $routeLogin = new Yaf\Route\Rewrite(
+            '/login',
+            [
+                'module' => 'Admin',
+                'controller' => 'Login',
+                'action' => 'index'
+            ], []
+        );
+        $routeRegister = new Yaf\Route\Rewrite(
+            '/register',
+            [
+                'module' => 'Admin',
+                'controller' => 'Register',
+                'action' => 'index'
+            ], []
+        );
+        $routeLogout = new Yaf\Route\Rewrite(
+            '/logout',
+            [
+                'module' => 'Admin',
+                'controller' => 'Logout',
+                'action' => 'logout'
 
-           ],[]
-       );
+            ], []
+        );
+        $router->addRoute('home', $route);
+        $router->addRoute('back', $routeAdmin);
+        $router->addRoute('login', $routeLogin);
+        $router->addRoute('register', $routeRegister);
+        $router->addRoute('logout', $routeLogout);
 
-        $router->addRoute('home',$route);
-        $router->addRoute('admin',$routeAdmin);
-        $router->addRoute('login',$routeLogin);
-        $router->addRoute('register',$routeRegister);
-        $router->addRoute('logout',$routeLogout);
+    }
 
+    public function _initView(Yaf\Dispatcher $dispatcher)
+    {
+        //在这里注册自己的view控制器，例如smarty,firekylin
 
-	}
-
-	public function _initView(Yaf\Dispatcher $dispatcher) {
-		//在这里注册自己的view控制器，例如smarty,firekylin
-
-	}
+    }
 
     /**
      * 引入Eloquent
@@ -92,10 +98,10 @@ class Bootstrap extends Yaf\Bootstrap_Abstract {
     {
         $loder = \Yaf\Loader::getInstance();
         $autoload = APP_ROOT . '/vendor/autoload.php';
-        if(file_exists($autoload)){
+        if (file_exists($autoload)) {
             $loder->import($autoload);
         }
-	}
+    }
 
     public function _initNamespace()
     {
@@ -115,8 +121,8 @@ class Bootstrap extends Yaf\Bootstrap_Abstract {
         $capsule->addConnection($database);          // 创建连接
         $capsule->setAsGlobal();                     // 设定全局静态访问
         $capsule->bootEloquent();                    // 启动Eloquet
-        if(ini_get('yaf.environ' != 'production')){
+        if (ini_get('yaf.environ' != 'production')) {
             $capsule->getConnection()->enableQueryLog();
         }
-	}
+    }
 }
