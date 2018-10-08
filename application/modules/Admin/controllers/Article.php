@@ -24,14 +24,12 @@ class ArticleController extends \common\controllers\Admin
 
         if ($this->_request->isPost()) {
 
-            var_dump($_POST);die;
             $insertData['title'] = $_POST['title'];
             $insertData['subtitle'] = $_POST['subtitle'];
             $insertData['tag'] = $_POST['tag'];
             $insertData['content'] = htmlspecialchars($_POST["article-html-code"]);
             $insertData['uid'] = $_SESSION['userinfo']['id'];
             $insertData['articlestatus'] = 1;
-
             $this->article->insertInfo($insertData);
 
         }
